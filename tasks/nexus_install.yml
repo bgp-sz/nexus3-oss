@@ -66,6 +66,14 @@
   ansible.builtin.set_fact:
     nexus_package: nexus-{{ nexus_version }}-unix.tar.gz
 
+- name: Register nexus package name
+  ansible.builtin.set_fact:
+    nexus_package: nexus-{{ nexus_version }}-{{ nexus_suffix }}-unix.tar.gz
+  when:
+    - nexus_suffix is defined
+    - nexus_suffix is not none
+    - nexus_suffix | length
+
 - name: Download nexus_package
   ansible.builtin.get_url:
     url: "{{ nexus_download_url }}/{{ nexus_package }}"
