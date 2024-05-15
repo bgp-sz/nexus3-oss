@@ -124,10 +124,12 @@ Ansible variables, along with the default values (see `default/main.yml`) :
     nexus_download_url: "http://download.sonatype.com/nexus/3"
     # nexus_download_ssl_verify: <unset>
     # nexus_version_running: <unset>
+    # nexus_suffix: <unset>
 ```
 
 The role will install latest nexus available version by default. You may fix the version by setting
 the `nexus_version` variable. See available versions at https://www.sonatype.com/download-oss-sonatype.
+Starting with 3.67.0 you can set `nexus_suffix` to `java11` to install that version (instead of the default java8).
 When having a slow pull through proxy, a retry can be useful to prevent timeouts. You can add retries to the download by setting these variables:
 ```yaml
     nexus_download_retries: 3 # 0 by default
